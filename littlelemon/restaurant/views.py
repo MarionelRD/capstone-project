@@ -7,9 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 from .serializers import UserSerializer
 from .models import MenuItem, Booking
 from .serializers import MenuItemSerializer, BookingSerializer
-from rest_framework.decorators import api_view
-
-# from django.http import HttpResponse
+from rest_framework.decorators import api_view, permission_classes
+from django.http import HttpResponse
 
 
 def index(request):
@@ -35,3 +34,4 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
 class BookingViewSet(ModelViewSet):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    permission_classes = [IsAuthenticated]

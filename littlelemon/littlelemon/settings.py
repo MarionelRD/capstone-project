@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "restaurant",
+    'LittleLemonAPI',
     "rest_framework",
+    'djoser',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +137,15 @@ MAILERS = {
         "BACKEND": "django.core.mail.backends.console.EmailBackend",
     },
 }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
+DJOSER={"USER_ID_FIELD":"username"}
+
 from django.db.backends.mysql.features import DatabaseFeatures
 DatabaseFeatures.minimum_database_version = (0, 0, 0)
