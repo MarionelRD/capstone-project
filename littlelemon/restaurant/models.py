@@ -15,7 +15,7 @@ class Menu(models.Model):
 
 class MenuItem(models.Model):
     permission_classes = [IsAuthenticated]
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
     title = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)

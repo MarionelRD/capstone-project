@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from restaurant import views  # Ajusta según el nombre de tu app
-from LittleLemonAPI import views as api_views  # Ajusta según el nombre de tu app
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -30,7 +29,6 @@ urlpatterns = [
     path('restaurant/menu/', include('restaurant.urls')),
     path('restaurant/booking/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/', include('LittleLemonAPI.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken'))
 ]
